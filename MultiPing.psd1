@@ -2,9 +2,12 @@
 RootModule="MultiPing.psm1"
 GUID="488127aa-8772-4319-9a62-31c726c09d1a"
 Author="Krisztian Buscsei"
-ModuleVersion="1.3"
+ModuleVersion="1.4"
 Description="MultiPing will generate a html based report to help troubleshoot network problems."
-RequiredModules = @({ModuleName=”UseFulTools”},{ModuleName=”Log2Chart”})
+RequiredModules = @(@{ModuleName=”UseFulTools”; RequiredVersion="1.1"},@{ModuleName=”Log2Chart”; RequiredVersion="1.2"})
+
+
+
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess
 PrivateData = @{
