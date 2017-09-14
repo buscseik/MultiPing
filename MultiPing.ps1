@@ -93,16 +93,17 @@
         $ListOFFiles = ls | where name -Like *PingOutput* | where LastWriteTime -gt $((get-date).AddHours(-1))
 
         #Generate html div that will mark the location of the graphs
-        $divTarget=Generate-Target $ListOFFiles 
-
-        #Generate data from ping logs
-        $Data=Generate-DataWithDefinition $ListOFFiles -LogType WindowsWithDate
-
-    
-        $Initiator=Generate-HTMLChartInitiator $ListOFFiles 
-        $GeneratedHtml=Generate-HtmlChart -DataLines $Data -TargetDiv $divTarget -GraphInitiater $Initiator
-        $GeneratedHtml | Out-File $ReportName -Encoding utf8
-
+        #$divTarget=Generate-Target $ListOFFiles 
+        #
+        ##Generate data from ping logs
+        #$Data=Generate-DataWithDefinition $ListOFFiles -LogType WindowsWithDate
+        #
+        #
+        #$Initiator=Generate-HTMLChartInitiator $ListOFFiles 
+        #$GeneratedHtml=Generate-HtmlChart -DataLines $Data -TargetDiv $divTarget -GraphInitiater $Initiator
+        #$GeneratedHtml | Out-File $ReportName -Encoding utf8
+           
+        Convert-Log2Chart -ListOfFiles $ListOFFiles -ReportName $ReportName -LogType WindowsWithDate
     
         Write-host "`n----------------------------------Summary generation completed------------------------------------"
     
